@@ -1,22 +1,29 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends 'shop/basic.html' %} {% block title %} Home Page {% endblock %}
+{% block body %} {% load static %}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!-- CARDS STARTS FROM HERE -->
+<div class="fluid-container">
+  <div class="row m-0 px-5 my-5 justify-content-center">
+    {% for product in products %}
+    <div class="col p-0 p-md-2 my-2 ">
+      <div class="card" >
+        <img
+          class="card-img-top"
+          src="/media/{{product.product_image}}"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title d-inline">{{product.product_name}}</h5>
+            <h5 class="card-title d-inline">{{product.product_price}}$</h5>
+          </div>
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <h1>Shop</h1>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
-</html>
+          <p class="card-text">{{product.product_description}}</p>
+          <a href="#" class="btn btn-success">Add to cart</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
